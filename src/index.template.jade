@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= htmlWebpackPlugin.options.title
+    each key in htmlWebpackPlugin.files.css
+      link(href=key, rel='stylesheet')
+  body
+    #main
+      include ./jade/hero.jade
+
+      if htmlWebpackPlugin.options.scripts
+        each key in htmlWebpackPlugin.options.scripts
+          script(src=key)
+      if htmlWebpackPlugin.files.chunks
+        each key in htmlWebpackPlugin.files.chunks
+          script(src=key.entry)
+
+      if htmlWebpackPlugin.options.devServer
+        script(src=htmlWebpackPlugin.options.devServer + "/webpack-dev-server.js")

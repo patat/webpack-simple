@@ -1,10 +1,14 @@
 :root {
   --color-blue: blue;
+  --color: #333333;
+  --font-scriptina-reg: 'scriptina_proregular', Arial, sans-serif;
 }
 
 .element {
+  font-family: var(--font-scriptina-reg);
   background-color: var(--color-blue);
-  color: white;
-  font-size: 20px;
+  background-image: url('../img/pattern.png');
+  color: var(--color);
+  font-size: 30px;
   padding: 20px;
 }
