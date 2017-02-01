@@ -1,0 +1,10 @@
+:root {
+  --color-blue: blue;
+}
+
+.element {
+  background-color: var(--color-blue);
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+}
