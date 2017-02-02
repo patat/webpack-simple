@@ -6,8 +6,10 @@ html
       link(href=key, rel='stylesheet')
   body
     #main
-      include ./jade/hero.jade
+      include ./jade/hero.part.jade
 
+      script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous")
       if htmlWebpackPlugin.options.scripts
         each key in htmlWebpackPlugin.options.scripts
           script(src=key)
