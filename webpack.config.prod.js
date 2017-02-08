@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin('[name].css');
 
@@ -33,7 +34,8 @@ module.exports = {
       {
         test: /\.js$/,
         use: [ 'babel-loader' ],
-        include: path.resolve(__dirname, 'src')
+        include: path.resolve(__dirname, 'src'),
+        exclude: path.resolve(__dirname, 'src/vendor')
       }, 
       {
         test: /\.(eot|svg|ttf|woff|woff2)$/,
@@ -41,7 +43,31 @@ module.exports = {
         include: path.resolve(__dirname, 'src/fonts')
       },
       {
-        test: /\.(jpe?g|png|gif|(?!svg))$/i, 
+        test: /\.(jpe?g|png|gif)$/i, 
+        use: [
+          {
+            loader: 'file-loader',
+            query: {
+              name: 'img/[name].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }          
+        ],
+        include: path.resolve(__dirname, 'src/img')
+      },
+      {
+        test: /\.svg$/i,
         loader: "file-loader?name=img/[name].[ext]",
         include: path.resolve(__dirname, 'src/img')
       },
@@ -57,8 +83,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       template: 'src/index.template.jade',
-      devServer: false
+      devServer: false,
+      scripts: [
+        'vendor/svgxuse.min.js'
+      ]
     }),
+    new CopyWebpackPlugin([{
+      from: 'src/vendor/',
+      to: 'vendor/'
+    }]),
     new webpack.optimize.UglifyJsPlugin()
   ],
 

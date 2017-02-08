@@ -1,21 +1,27 @@
 doctype html
 html
   head
-    title= htmlWebpackPlugin.options.title
+    title Working Title
     each key in htmlWebpackPlugin.files.css
       link(href=key, rel='stylesheet')
   body
+    style #pixel-bg { position: relative; z-index: 2147483646 !important;} .pixel-img {position: absolute;   opacity: 0.5; margin: 0px; display: block; padding: 0px; pointer-events: none; cursor: move !important; z-index: 2147483646 !important;}
+    #pixel-bg
+      img.pixel-img(src="./home.jpg")
+
+    // BEGIN MAIN
     #main
       include ./jade/hero.part.jade
+    // END MAIN
 
-      script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous")
-      if htmlWebpackPlugin.options.scripts
-        each key in htmlWebpackPlugin.options.scripts
-          script(src=key)
-      if htmlWebpackPlugin.files.chunks
-        each key in htmlWebpackPlugin.files.chunks
-          script(src=key.entry)
+    script(src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+crossorigin="anonymous")
+    if htmlWebpackPlugin.options.scripts
+      each key in htmlWebpackPlugin.options.scripts
+        script(src=key)
+    if htmlWebpackPlugin.files.chunks
+      each key in htmlWebpackPlugin.files.chunks
+        script(src=key.entry)
 
-      if htmlWebpackPlugin.options.devServer
-        script(src=htmlWebpackPlugin.options.devServer + "/webpack-dev-server.js")
+    if htmlWebpackPlugin.options.devServer
+      script(src=htmlWebpackPlugin.options.devServer + "/webpack-dev-server.js")

@@ -1,0 +1,77 @@
+:root {
+  --font-roboto: 'Roboto', Arial, sans-serif;
+  --font-roboto-condensed: 'Roboto Condensed', Arial, sans-serif;
+
+  --color-header-bg-grey: #e9eae2;
+  --color-header-bg-green: #7acec3;
+  --color-bg-orange: #ebb240;
+  --color-section-heading: #fefefe;
+
+  --reset-font: {
+    font-size: 0;
+    line-height: 0;
+  };
+
+  --clearfix {
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+  };
+
+  --section-heading-font {
+    font-family: var(--font-roboto-condensed);
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 400;
+    color: var(--color-section-heading);
+  };
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1500px;
+  line-height: 1.5em;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & li {
+    margin: 0;
+    padding: 0;    
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#main {
+  @apply --reset-font;
+}
+
+.diagonal-bg {
+  position: absolute;
+  border: 1px solid #ffffff;
+  width: 300%;
+  bottom: -2px;
+  left: -2px;
+  transform: rotate(-47deg);
+  transform-origin: 0% 0%;
+
+  &__container {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+}
