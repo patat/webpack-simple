@@ -56,6 +56,30 @@ const config = {
       { 
         test: /\.jade$/, 
         loader: 'jade-loader?pretty' 
+      },
+      {
+        test: /\.scss$/,
+        loader: extractCSS.extract({
+          loader: [
+            {
+              loader: 'css-loader',
+              query: {
+                importLoaders: true,
+                sourceMap: false
+              },
+            },
+            'postcss-loader',
+            {
+              loader: 'sass-loader',
+              query: {
+                sourceMap: false,
+              }
+            }
+          ],
+        }),
+        include: [
+          path.resolve(__dirname, 'src')
+        ]
       }
     ]
   },

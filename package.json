@@ -27,16 +27,19 @@
     "install": "^0.8.4",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
+    "node-sass": "^4.5.0",
     "postcss": "^5.2.11",
     "postcss-cssnext": "^2.9.0",
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.2.2",
+    "sass-loader": "^6.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^1.16.3",
     "webpack-merge": "^2.6.1"
   },
   "dependencies": {
+    "inuitcss": "^6.0.0-beta.4",
     "normalize.css": "^5.0.0",
     "svgxuse": "^1.2.1"
   }

@@ -1,0 +1,12 @@
+/* ==========================================================================
+   #EXAMPLE-COMPONENT
+   ========================================================================== */
+
+.c-example-component {
+  font-family: 'scriptina_proregular', Arial, sans-serif;
+  background-color: blue;
+  background-image: url('../img/pattern.png');
+  color: #333333;
+  @inclide font-size(30px);
+  padding: 20px;
+}
